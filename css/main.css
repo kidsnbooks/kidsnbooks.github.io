@@ -1,0 +1,79 @@
+body {
+  background-color: #e5f5de;
+  font-family: "Libertinus Sans";
+  font-size: 20px;
+  color: #1f0909;
+  width: min(100% - 5rem, 1200px);
+  margin: auto;
+  padding-bottom: 100px
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1, h2, .subtitle {
+  justify-self: center;
+  font-weight: normal;
+}
+
+h1 {
+  color: #73161a;
+  font-size: 4em;
+
+  justify-self: center;
+  margin-bottom: 1rem;
+
+  padding-bottom: 10px;
+  border-bottom: 5px dotted;
+}
+
+.subtitle {
+  color: #736366;
+
+  font-size: 2em;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+.cols {
+  display: flex;
+  justify-content: center;
+}
+
+.cols > div {
+  flex: 1;
+}
+
+.funny-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 85%;
+  margin-top: 30px;
+  
+  list-style: none;
+}
+.funny-links a {
+  font-size: 1.2em;
+  background-color: #6c755e;
+  width: fit-content;
+  padding: 60px 60px;
+
+  text-align: center;
+  color: #e2e6da;
+  text-decoration: none;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100px;
+}
