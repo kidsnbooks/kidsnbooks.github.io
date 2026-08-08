@@ -55,18 +55,56 @@ function randint(m) {
 }
 
 
-const list = document.querySelector(".funny-links")
+function expandAnim(e) {
+  e.preventDefault()
 
-async function addAnimation(it) {
-  await new Promise(r => setTimeout(r, 100))
-  it.style.transitionDuration = "0.5s";
+  const href = this.href;
+  const rect = this.getBoundingClientRect();
+  const computed = getComputedStyle(this);
+
+  console.log(href.split("/")[3])
+  const color = computed.getPropertyValue(`--color-${href.split("/")[3]}`)
+
+  const overlay = document.createElement("div");
+  Object.assign(overlay.style, {
+    position: "fixed",
+    top: rect.top + "px",
+    left: rect.left + "px",
+    width: rect.width + "px",
+    height: rect.height + "px",
+    backgroundColor: computed.backgroundColor || "#000",
+    borderRadius: "100%",
+    zIndex: "9999",
+    transition: "all 0.3s ease-in-out",
+    pointerEvents: "none",
+  });
+  document.body.appendChild(overlay);
+
+  void overlay.offsetWidth;
+
+  Object.assign(overlay.style, {
+    top: "0",
+    left: "0",
+    width: "100vw",
+    height: "100vh",
+    borderRadius: "0",
+    backgroundColor: color
+  });
+
+  overlay.addEventListener("transitionend", () => {
+    window.location.href = href;
+  }, { once: true });
 }
 
-list.querySelectorAll("a").forEach(it => {
-  it.style.marginLeft = `${randint(200)}px`;
-  it.style.marginLeft = `${randint(200)}px`;
-  blobClip(it, padding = 30, points = 12);
-  it.addEventListener("mouseenter", () => blobClip(it, padding = 30, points = 12))
 
-  addAnimation(it)
+document.querySelectorAll(".blob").forEach(it => {
+  blobClip(it, padding = 30, points = 12);
+  it.style.transition = "clip-path 1s";
+  it.addEventListener("mouseenter", () => blobClip(it, padding = 30, points = 12))
+})
+
+document.querySelectorAll(".randshift").forEach(it => {
+    it.style.marginLeft = `${randint(40)}%`;
+
+    it.addEventListener("click", expandAnim)
 })
