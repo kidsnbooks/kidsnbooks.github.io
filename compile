@@ -1,0 +1,14 @@
+#!/usr/bin/env fish
+
+for f in (ls src)
+    if [ $f = index.typ ]
+        set outdir .
+    else
+        set outdir (string replace ".typ" "" $f)
+        if [ ! -d $outdir ]
+            mkdir $outdir
+        end
+    end
+    echo compiling $f
+    typst compile src/children.typ --features html --format html --root . $outdir/index.html
+end
