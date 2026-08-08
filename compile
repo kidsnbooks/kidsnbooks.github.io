@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-for f in (ls src)
+for f in (src/*.typ)
     if [ $f = index.typ ]
         set outdir .
     else
