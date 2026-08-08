@@ -58,12 +58,9 @@ function randint(m) {
 function expandAnim(e) {
   e.preventDefault()
 
+  const color = this._color
   const href = this.href;
   const rect = this.getBoundingClientRect();
-  const computed = getComputedStyle(this);
-
-  console.log(href.split("/")[3])
-  const color = computed.getPropertyValue(`--color-${href.split("/")[3]}`)
 
   const overlay = document.createElement("div");
   Object.assign(overlay.style, {
@@ -72,7 +69,7 @@ function expandAnim(e) {
     left: rect.left + "px",
     width: rect.width + "px",
     height: rect.height + "px",
-    backgroundColor: computed.backgroundColor || "#000",
+    backgroundColor: this._bgColor || color,
     borderRadius: "100%",
     zIndex: "9999",
     transition: "all 0.3s ease-in-out",
@@ -104,7 +101,20 @@ document.querySelectorAll(".blob").forEach(it => {
 })
 
 document.querySelectorAll(".randshift").forEach(it => {
-    it.style.marginLeft = `${randint(40)}%`;
-
-    it.addEventListener("click", expandAnim)
+  it.style.marginLeft = `${randint(40)}%`;
 })
+
+const flinks = document.querySelector(".funny-links")
+if (flinks) {
+  flinks.querySelectorAll("a").forEach(it => {
+    const page = it.href.split("/")[3]
+    const computed = getComputedStyle(it)
+
+    it.style.backgroundColor = computed.getPropertyValue(`--color-${page}-dark`)
+    it.style.color = computed.getPropertyValue(`--color-${page}-dark-fg`)
+
+    it._color = computed.getPropertyValue(`--color-${page}`)
+    it._bgColor = computed.backgroundColor
+    it.addEventListener("click", expandAnim)
+  })
+}

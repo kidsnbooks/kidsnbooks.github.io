@@ -1,14 +1,12 @@
 :root {
   --color-index: #e5f5de;
-  --color-children: #f2dcc2;
-  --color-teenagers: #e8e7e1;
-  --color-adults: #dcdcfa;
-  --color-nothing-sacred: #ebd3da;
 
   --color-bg: var(--color-index);
 
-  --color-title: #73161a;
-  --color-subtitle: #736366;
+  --color-accent: #3c501e;
+
+  --color-title: var(--color-accent);
+  --color-subtitle: #6c755e;
 
   --color-body: #1f0909;
 
@@ -18,19 +16,55 @@
   --color-pop: #6c755e;
   --color-pop-fg: #e2e6da;
 
-  --color-accent: #73161a;
+
+  --color-children: #bedcff;
+  --color-children-dark: #183286;
+  --color-children-dark-fg: #e3e8f8;
+
+  --color-teenagers: #e8e7e1;
+  --color-teenagers-dark: #74716b;
+  --color-teenagers-dark-fg: #edebe7;
+
+  --color-adults: #dcdcfa;
+  --color-adults-dark: #744779;
+  --color-adults-dark-fg: #f0dff2;
+
+  --color-nothing-sacred: #ebd3da;
+  --color-nothing-sacred-dark: #6c2439;
+  --color-nothing-sacred-dark-fg: #eed1d5;
+
 }
 
 body#children {
   --color-bg: var(--color-children);
+  --color-pop: var(--color-children-dark);
+  --color-pop-fg: var(--color-children-dark-fg);
+  --color-accent: #812d15;
+  --color-title: var(--color-accent);
 }
+
 body#adults {
   --color-bg: var(--color-adults);
+  --color-pop: var(--color-adults-dark);
+  --color-pop-fg: var(--color-adults-dark-fg);
+  --color-accent: #231e97;
+  --color-title: var(--color-accent)
 }
+
 body#teenagers {
   --color-bg: var(--color-teenagers);
+  --color-pop: var(--color-teenagers-dark);
+  --color-pop-fg: var(--color-teenagers-dark-fg);
+  --color-accent: #7c0313;
+  --color-title: var(--color-accent);
 }
+
 body#nothing-sacred {
   --color-bg: var(--color-nothing-sacred);
+  --color-pop: var(--color-nothing-sacred-dark);
+  --color-pop-fg: var(--color-nothing-sacred-dark-fg);
+  --color-accent: #990014;
+  --color-title: var(--color-accent);
+  --color-subtitle: #6c3c42;
 }
 
