@@ -1,0 +1,36 @@
+:root {
+  --color-index: #e5f5de;
+  --color-children: #f2dcc2;
+  --color-teenagers: #e8e7e1;
+  --color-adults: #dcdcfa;
+  --color-nothing-sacred: #ebd3da;
+
+  --color-bg: var(--color-index);
+
+  --color-title: #73161a;
+  --color-subtitle: #736366;
+
+  --color-body: #1f0909;
+
+  --color-flink: #6c755e;
+  --color-flink-fg: #e2e6da;
+
+  --color-pop: #6c755e;
+  --color-pop-fg: #e2e6da;
+
+  --color-accent: #73161a;
+}
+
+body#children {
+  --color-bg: var(--color-children);
+}
+body#adults {
+  --color-bg: var(--color-adults);
+}
+body#teenagers {
+  --color-bg: var(--color-teenagers);
+}
+body#nothing-sacred {
+  --color-bg: var(--color-nothing-sacred);
+}
+
