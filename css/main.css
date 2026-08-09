@@ -17,8 +17,13 @@ body {
   margin-right: auto;
 }
 
+h1 > a {
+  text-decoration: none;
+  color: inherit;
+}
+
 h1, h2, .subtitle {
-  justify-self: center;
+  text-align: center;
   font-weight: normal;
 
   line-height: 1.1;
@@ -41,6 +46,10 @@ h1 {
   font-size: 2em;
   font-style: italic;
   margin-top: 1rem;
+}
+
+h2 {
+  font-size: 1.9em;
 }
 
 strong {
