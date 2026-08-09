@@ -3,6 +3,8 @@
 #let template(it, id: "index") = {
   set text(lang: "ru")
 
+  show title: link.with("/")
+
   html.html({
     html.head({
       html.link(
