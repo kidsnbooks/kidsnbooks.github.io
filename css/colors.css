@@ -3,10 +3,10 @@
 
   --color-bg: var(--color-index);
 
-  --color-accent: #3c501e;
+  --color-accent: #8a4410;
 
   --color-title: var(--color-accent);
-  --color-subtitle: #6c755e;
+  --color-subtitle: #816a58;
 
   --color-body: #1f0909;
 
@@ -18,7 +18,7 @@
 
 
   --color-children: #bedcff;
-  --color-children-dark: #183286;
+  --color-children-dark: #384889;
   --color-children-dark-fg: #e3e8f8;
 
   --color-teenagers: #e8e7e1;
@@ -30,7 +30,7 @@
   --color-adults-dark-fg: #f0dff2;
 
   --color-nothing-sacred: #ebd3da;
-  --color-nothing-sacred-dark: #6c2439;
+  --color-nothing-sacred-dark: #7f3c49;
   --color-nothing-sacred-dark-fg: #eed1d5;
 
 }
