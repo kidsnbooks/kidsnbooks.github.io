@@ -64,7 +64,6 @@ strong {
 .cols {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .cols > div {
@@ -84,7 +83,7 @@ strong {
   margin-top: -15px;
   margin-bottom: 15px;
   
-  list-style: none;
+  list-style: none;auto
 }
 .funny-links a {
   font-size: 1.2em;
@@ -100,7 +99,8 @@ strong {
 .pop {
   text-align: center;
   padding: 50px 70px;
-  max-width: 500px;
+  max-width: 400px;
+  height: fit-content;
   margin-top: 0px;
   margin-bottom: -10px;
   background-color: var(--color-pop);
@@ -125,4 +125,54 @@ ul {
 }
 ul li {
   display: block;
+}
+
+
+.pops {
+  margin: auto;
+}
+
+.pops.triangle {
+  max-width: 800px;
+  display: flex;
+  gap: 0px;
+  align-items: center;
+  :first-child {
+    margin-right: -20px;
+  }
+  > div :first-child {
+    margin-bottom: 10px;
+  }
+}
+
+.pops.row {
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+}
+
+.pops.stairs {
+  max-width: 1000px;
+  :first-child {
+    margin-left: auto;
+  }
+  :nth-child(2) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.pops.pyramid {
+  max-width: 800px;
+
+  > div {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    gap: 20px;
+  }
+  .pop {
+    max-width: 200px;
+  }
 }
