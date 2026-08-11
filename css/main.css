@@ -4,7 +4,7 @@
 body {
   background-color: var(--color-bg);
   font-family: "Libertinus Sans", sans-serif;
-  font-size: 20px;
+  font-size: 19px;
   color: var(--color-body);
   width: min(100% - 5rem, 1200px);
   margin: auto;
@@ -57,7 +57,6 @@ strong {
   font-family: "Libertinus Serif", sans-serif;
   font-style: italic;
   font-weight: normal;
-  /* text-decoration: underline; */
   color: var(--color-accent);
   font-size: 1.2em;
 }
@@ -81,6 +80,7 @@ strong {
   justify-content: space-between;
 
   height: 85%;
+  margin-top: -15px;
   margin-bottom: 15px;
   
   list-style: none;
