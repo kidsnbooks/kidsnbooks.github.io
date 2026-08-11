@@ -101,7 +101,7 @@ document.querySelectorAll(".blob").forEach(it => {
 })
 
 document.querySelectorAll(".randshift").forEach(it => {
-  it.style.marginLeft = `${randint(40)}%`;
+  it.style.marginLeft = `${randint(50)}%`;
 })
 
 const flinks = document.querySelector(".funny-links")

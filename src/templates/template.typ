@@ -31,8 +31,13 @@
 
 #let subtitle = html.p.with(class: "subtitle")
 
-#let cols(..args) = html.div(
-  args.pos().map(html.div).join(),
+#let cols(..args, widths: ()) = html.div(
+  args.pos().zip(widths + (none,) * 99).map(
+    ((body, basis)) => html.div(
+      body,
+      ..(if basis != none {(style: "flex-basis: " + repr(basis))} else {(:)})
+    )
+  ).join(),
   class: "cols",
 )
 

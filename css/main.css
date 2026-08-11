@@ -32,7 +32,7 @@ h1, h2, .subtitle {
 
 h1 {
   color: var(--color-title);
-  font-size: 4em;
+  font-size: 3.5em;
 
   justify-self: center;
   margin-bottom: 1rem;
@@ -81,14 +81,15 @@ strong {
   justify-content: space-between;
 
   height: 85%;
-  margin-top: 30px;
+  margin-bottom: 15px;
   
   list-style: none;
 }
 .funny-links a {
   font-size: 1.2em;
   background-color: var(--color-flink);
-  padding: 60px 60px;
+  padding: 45px 50px;
+  margin-bottom: -15px;
 
   text-align: center;
   color: var(--color-flink-fg);
@@ -96,9 +97,10 @@ strong {
 }
 
 .pop {
-  padding: 50px 60px;
+  padding: 50px 70px;
   max-width: 500px;
-  margin: 0px;
+  margin-top: 0px;
+  margin-bottom: -10px;
   background-color: var(--color-pop);
   color: var(--color-pop-fg);
 }
