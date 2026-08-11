@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 
+if [[ $1 != "-l" ]]; then
+    root="_site/"
+    if [ ! -d $root ]; then
+        mkdir $root
+    fi
+    cp -r css js img $root
+fi
+
 for f in src/*.typ; do
     if [ $f = src/index.typ ]; then
-        set outdir .
+        outdir=$root
     else
-        outdir=$(basename -s .typ $f)
+        outdir="$root$(basename -s .typ $f)/"
         if [ ! -d $outdir ]; then
             mkdir $outdir
         fi
     fi
-    echo compiling $f to $outdir/index.html
-    typst compile $f --features html --format html --root . $outdir/index.html
+    echo compiling $f to "${outdir}index.html"
+    typst compile $f --features html --format html --root . "${outdir}index.html"
 done

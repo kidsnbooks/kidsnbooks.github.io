@@ -2,9 +2,24 @@ name: compile
 
 on: [push]
 jobs:
-  compile:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - id: pages
+        uses: actions/configure-pages@v5
       - uses: typst-community/setup-typst@v5
-      - run: ./compile
+      - id: compile
+        run: ./compile
+      - uses: actions/upload-pages-artifact@v4
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
