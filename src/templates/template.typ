@@ -31,7 +31,7 @@
 
 #let subtitle = html.p.with(class: "subtitle")
 
-#let cols(..args, widths: (), cascade: 0) = {
+#let cols(..args, widths: (), gap: 0, cascade: 0) = {
   html.div(
     args.pos().zip(widths + (none,) * 99, range(99)).map(
       ((body, basis, n)) => html.div(
@@ -43,6 +43,7 @@
       )
     ).join(),
     class: "cols",
+    ..(if gap != 0 {(style: "gap: " + str(gap) + "px",)})
   )
 }
 
