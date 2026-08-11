@@ -14,6 +14,9 @@
       html.meta(
         charset: "utf-8"
       )
+      html.link(rel: "preconnect", href: "https://fonts.googleapis.com")
+      html.link(rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin)
+      html.link(href: "https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap", rel: "stylesheet")
     })
     html.body(
       it,

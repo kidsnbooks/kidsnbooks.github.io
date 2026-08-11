@@ -1,8 +1,9 @@
 @import "colors.css";
+@import "fonts.css";
 
 body {
   background-color: var(--color-bg);
-  font-family: "Libertinus Sans";
+  font-family: "Libertinus Sans", sans-serif;
   font-size: 20px;
   color: var(--color-body);
   width: min(100% - 5rem, 1200px);
@@ -53,7 +54,7 @@ h2 {
 }
 
 strong {
-  font-family: "Libertinus Serif";
+  font-family: "Libertinus Serif", sans-serif;
   font-style: italic;
   font-weight: normal;
   /* text-decoration: underline; */
