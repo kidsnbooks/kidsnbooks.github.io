@@ -33,15 +33,19 @@
 
 #let cols(..args, widths: (), gap: 0, cascade: 0) = {
   html.div(
-    args.pos().zip(widths + (none,) * 99, range(99)).map(
-      ((body, basis, n)) => html.div(
+    args.pos().zip(widths + (none,) * 99, range(99))
+    .map(((body, basis, n)) => {
+      let style = (
+          (if basis != none {("flex-basis: " + repr(basis),)} else {()}) +
+          (if cascade != 0 {("margin-top: " + str(n * cascade) + "px",)} else {()})
+      ).join(", ")
+      
+      html.div(
         body,
-        style: (
-          ..(if basis != none {("flex-basis: " + repr(basis),)} else {()}),
-          ..(if cascade != 0 {("margin-top: " + str(n * cascade) + "px",)} else {()}),
-        ).join(", ")
+        ..(if style != none {(style: style)} else {(:)})
       )
-    ).join(),
+    }).join(),
+
     class: "cols",
     ..(if gap != 0 {(style: "gap: " + str(gap) + "px",)})
   )
@@ -66,8 +70,10 @@
   ..args
 ))
 
-#let pop = html.p.with(
-  class: "pop blob randshift"
+#let pop(body, margin: none) = html.p(
+  body,
+  class: "pop blob",
+  ..(if margin != none {(style: "margin: " + margin)})
 )
 
 #let shifted = html.p.with(
@@ -76,4 +82,16 @@
 
 #let align-right = html.p.with(
   style: "text-align: right"
+)
+
+#let margin(..args, body) = html.div(
+  body,
+  class: "fit",
+  style: "margin: " + args.pos().join(" ")
+)
+
+#let center(body, max-width: none) = html.div(
+  body,
+  class: "center",
+  ..(if max-width != none {(style: "max-width: " + str(max-width) + "px")})
 )
