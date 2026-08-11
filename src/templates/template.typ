@@ -31,15 +31,20 @@
 
 #let subtitle = html.p.with(class: "subtitle")
 
-#let cols(..args, widths: ()) = html.div(
-  args.pos().zip(widths + (none,) * 99).map(
-    ((body, basis)) => html.div(
-      body,
-      ..(if basis != none {(style: "flex-basis: " + repr(basis))} else {(:)})
-    )
-  ).join(),
-  class: "cols",
-)
+#let cols(..args, widths: (), cascade: 0) = {
+  html.div(
+    args.pos().zip(widths + (none,) * 99, range(99)).map(
+      ((body, basis, n)) => html.div(
+        body,
+        style: (
+          ..(if basis != none {("flex-basis: " + repr(basis),)} else {()}),
+          ..(if cascade != 0 {("margin-top: " + str(n * cascade) + "px",)} else {()}),
+        ).join(", ")
+      )
+    ).join(),
+    class: "cols",
+  )
+}
 
 #let funny-links(..args) = {
   show link: it => html.a(
