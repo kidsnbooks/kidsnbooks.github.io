@@ -71,7 +71,14 @@ strong {
 }
 
 .blob {
+  text-align: center;
+  height: fit-content;
   width: fit-content;
+
+  padding: 50px 70px;
+  max-width: 400px;
+  background-color: var(--color-pop);
+  color: var(--color-pop-fg);
 }
 
 .funny-links {
@@ -94,18 +101,12 @@ strong {
   font-size: 1.2em;
   background-color: var(--color-flink);
   padding: 45px 50px;
-  height: fit-content;
 
-  text-align: center;
   color: var(--color-flink-fg);
   text-decoration: none;
 }
 
 .pop {
-  text-align: center;
-  padding: 50px 70px;
-  max-width: 400px;
-  height: fit-content;
   margin-top: 0px;
   margin-bottom: -10px;
   background-color: var(--color-pop);
@@ -124,12 +125,38 @@ strong {
   border-radius: 100px;
 }
 
+.wrap {
+  float: left;
+  margin-right: 30px;
+}
+
+.quote {
+  font-size: 0.9em;
+  max-width: 500px;
+
+  > blockquote {
+    padding: 60px 80px;
+    margin: auto
+  }
+
+  .attribution {
+    text-align: right
+  }
+}
+
+
 ul {
   padding-left: 0px;
   margin: 0px;
 }
 ul li {
   display: block;
+}
+
+hr {
+  margin-top: 40px;
+  max-width: 200px;
+  border-color: var(--color-accent)
 }
 
 

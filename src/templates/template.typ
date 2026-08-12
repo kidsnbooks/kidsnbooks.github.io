@@ -1,6 +1,7 @@
 #let p = html.p
 
 #let form = [
+  #divider()
   = Записаться
   
   #html.form(
@@ -20,7 +21,7 @@
     #html.option(value: "general", selected: true)[Просто спросить]
     ]
 
-    #html.label[*Напишите любой текст.*]
+    #html.label[*Что бы вы хотели спросить?*]
     #html.textarea(name: "comment", required: true)
 
     #html.button(type: "submit")[Отправить.]
@@ -55,6 +56,19 @@
   set text(lang: "ru")
 
   show title: link.with("/")
+
+  show quote.where(block: true): it => html.div(
+    html.blockquote(
+      class: "blob",
+      it.body
+    )
+    + p(
+      class: "attribution",
+      [--- ] + it.attribution
+    ),
+    class: "quote"
+  )
+
 
   html.html({
     html.head({
