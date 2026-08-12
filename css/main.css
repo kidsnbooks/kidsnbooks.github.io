@@ -75,21 +75,26 @@ strong {
 }
 
 .funny-links {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  justify-content: center;
 
-  height: 85%;
-  margin-top: -15px;
-  margin-bottom: 15px;
-  
-  list-style: none;
+  :nth-child(2) {
+    margin-left: -40px;
+  }
+  :nth-child(3) {
+    margin-left: 80px;
+  }
+  :nth-child(4) {
+    margin-left: 40px;
+  }
 }
 .funny-links a {
   font-size: 1.2em;
   background-color: var(--color-flink);
   padding: 45px 50px;
-  margin-bottom: -15px;
+  height: fit-content;
 
   text-align: center;
   color: var(--color-flink-fg);
@@ -208,6 +213,7 @@ form p {
 }
 
 #submitted-msg {
+  margin-top: 40px;
   display: none;
   justify-self: center;
   padding: 30px 40px;

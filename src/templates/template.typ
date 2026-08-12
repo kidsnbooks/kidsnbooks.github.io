@@ -108,7 +108,7 @@
   show link: it => html.a(
     it.body,
     href: it.dest,
-    class: "blob randshift"
+    class: "blob"
   )
 
   html.div(
