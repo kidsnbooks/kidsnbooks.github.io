@@ -1,5 +1,56 @@
 #let p = html.p
 
+#let form = [
+  = Записаться
+  
+  #html.form(
+    action: "https://api.web3forms.com/submit",
+    method: "POST"
+  )[
+    #html.input(type: "hidden", name: "access_key", value: "b61ad5ec-0e78-4880-b22e-a21d10f704aa")
+
+    #html.label[*Ваше имя*]
+    #html.input(type: "text", name: "name", autocomplete: "name", required: true)
+
+    #html.label[*Ваш адрес электронной почты*]
+    #html.input(type: "email", name: "email", autocomplete: "email", required: true)
+
+    #html.label[*Какой курс Вам интересен?*]
+    #html.select(name: "course", required: true, id: "course-select")[
+    #html.option(value: "general", selected: true)[Просто спросить]
+    ]
+
+    #html.label[*Напишите любой текст.*]
+    #html.textarea(name: "comment", required: true)
+
+    #html.button(type: "submit")[Отправить.]
+  ]
+]
+
+#let submitted-msg = html.div(
+  id: "submitted-msg",
+  class: "blob"
+)[
+  Спасибо! Я Вам напишу.
+]
+
+// <form
+//   action="https://formspree.io/f/mgawyajb"
+//   method="POST"
+// >
+//   <label>
+//     Your email:
+//     <input type="email" name="email">
+//   </label>
+//   <label>
+//     Your message:
+//     <textarea name="message"></textarea>
+//   </label>
+//   <!-- your other form fields go here -->
+//   <button type="submit">Send</button>
+// </form>
+
+
 #let template(it, id: "index") = {
   set text(lang: "ru")
 
@@ -19,7 +70,9 @@
       html.link(href: "https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap", rel: "stylesheet")
     })
     html.body(
-      it,
+      submitted-msg
+      + it
+      + form,
       id: id
     )
     html.script(

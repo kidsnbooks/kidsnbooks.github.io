@@ -1,3 +1,10 @@
+const formCourses = [
+  ["children", "Клуб для детей"],
+  ["teenagers", "Клуб для подростков"],
+  ["adults", "Клуб для взрослых"],
+  ["nothing-sacred", "«Ничего святого»"],
+]
+
 function blobClip(element, padding = 12, points = 10) {
   function ellipsePoint(t, halfW, halfH) {
     const angle = t * 2 * Math.PI;
@@ -117,4 +124,26 @@ if (flinks) {
     it._bgColor = computed.backgroundColor
     it.addEventListener("click", expandAnim)
   })
+}
+
+
+const courseSelect = document.getElementById("course-select")
+if (courseSelect) {
+  console.log("course-select found")
+
+  formCourses.forEach(([id, body]) => {
+    const opt = document.createElement("option")
+    opt.setAttribute("value", id)
+    opt.appendChild(document.createTextNode(body))
+
+    if (id == document.body.id) {
+      opt.setAttribute("selected", true)
+    }
+    courseSelect.appendChild(opt)
+  })  
+}
+
+
+if ((new URLSearchParams(window.location.search)).has("submitted")) {
+  document.getElementById("submitted-msg").style.display = "block"
 }
