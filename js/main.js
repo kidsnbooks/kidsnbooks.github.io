@@ -82,6 +82,7 @@ function expandAnim(e) {
     transition: "all 0.3s ease-in-out",
     pointerEvents: "none",
   });
+  overlay.setAttribute("class", "animation")
   document.body.appendChild(overlay);
 
   void overlay.offsetWidth;
@@ -125,7 +126,11 @@ if (flinks) {
     it.addEventListener("click", expandAnim)
   })
 }
-
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    document.querySelectorAll(".animation").forEach(el => el.remove());
+  }
+});
 
 const courseSelect = document.getElementById("course-select")
 if (courseSelect) {
