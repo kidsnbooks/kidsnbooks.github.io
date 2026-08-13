@@ -55,7 +55,7 @@ body#teenagers {
   --color-bg: var(--color-teenagers);
   --color-pop: var(--color-teenagers-dark);
   --color-pop-fg: var(--color-teenagers-dark-fg);
-  --color-accent: #7c0313;
+  --color-accent: #326183;
   --color-title: var(--color-accent);
 }
 
