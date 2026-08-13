@@ -135,7 +135,7 @@ strong {
 }
 
 img {
-  border-radius: 80px;
+  border-radius: 5px;
 }
 
 .avatar {
@@ -145,12 +145,16 @@ img {
   height: 200px;
 }
 
+img.tiny {
+  max-width: 200px;
+  height: auto;
+}
 img.small {
   max-width: 400px;
   height: auto;
 }
-img.tiny {
-  max-width: 200px;
+img.medium{
+  max-width: 600px;
   height: auto;
 }
 

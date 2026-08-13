@@ -6,6 +6,8 @@ const formCourses = [
 ]
 
 function blobClip(element, padding = 12, points = 10) {
+  let firstRender = true;
+
   function ellipsePoint(t, halfW, halfH) {
     const angle = t * 2 * Math.PI;
     return { x: halfW * Math.cos(angle), y: halfH * Math.sin(angle) };
@@ -48,17 +50,20 @@ function blobClip(element, padding = 12, points = 10) {
     });
 
     element.style.clipPath = `path('${quadraticMidpointPath(pts)}')`;
+
+    if (firstRender) {
+      requestAnimationFrame(() => {
+        element.style.transition = "clip-path 1s";
+      });
+      firstRender = false;
+    }
   }
+
 
   render();
   const ro = new ResizeObserver(render);
   ro.observe(element);
   return ro;
-}
-
-
-function randint(m) {
-  return Math.random() * m
 }
 
 
@@ -103,13 +108,9 @@ function expandAnim(e) {
 
 
 document.querySelectorAll(".blob").forEach(it => {
-  blobClip(it, padding = 30, points = 12);
+  blobClip(it, 30, 12);
   it.style.transition = "clip-path 1s";
-  it.addEventListener("mouseenter", () => blobClip(it, padding = 30, points = 12))
-})
-
-document.querySelectorAll(".randshift").forEach(it => {
-  it.style.marginLeft = `${randint(50)}%`;
+  it.addEventListener("mouseenter", () => blobClip(it, 30, 12))
 })
 
 const flinks = document.querySelector(".funny-links")
