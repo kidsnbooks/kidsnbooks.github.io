@@ -35,23 +35,6 @@
   Спасибо! Я Вам напишу.
 ]
 
-// <form
-//   action="https://formspree.io/f/mgawyajb"
-//   method="POST"
-// >
-//   <label>
-//     Your email:
-//     <input type="email" name="email">
-//   </label>
-//   <label>
-//     Your message:
-//     <textarea name="message"></textarea>
-//   </label>
-//   <!-- your other form fields go here -->
-//   <button type="submit">Send</button>
-// </form>
-
-
 #let template(it, id: "index") = {
   set text(lang: "ru")
 
@@ -78,6 +61,10 @@
       )
       html.meta(
         charset: "utf-8"
+      )
+      html.meta(
+        name: "viewport",
+        content: "width=device-width, initial-scale=1"
       )
       html.link(rel: "preconnect", href: "https://fonts.googleapis.com")
       html.link(rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous")
