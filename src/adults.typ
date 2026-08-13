@@ -14,7 +14,7 @@
 
 #shifted[...*вы можете договориться со мной о регулярных встречах книжного клуба*. Я подберу вам список рассказов, чтение которых вас не обременит, и мы будем встречаться раз в неделю на час в Zoom’e и обсуждать рассказ. Я буду мягко модерировать встречу так, чтобы разговор не затухал и все участвовали в разговоре в меру возможности и желания.]
 
-#html.img(src: "/img/bibliotheque.jpg", alt: "Mini-bibliothèque", class: "small wrap-right blob", style: "max-height: 350px")
+#html.img(src: "/img/bibliotheque.jpg", alt: "Mini-bibliothèque", class: "small wrap right blob", style: "max-height: 350px")
 
 
 

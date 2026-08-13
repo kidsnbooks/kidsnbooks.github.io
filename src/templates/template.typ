@@ -135,8 +135,10 @@
   ..(if margin != none {(style: "margin: " + margin)})
 )
 
-#let shifted = html.p.with(
-  class: "shifted"
+#let shifted(body, shift: 40) = html.p(
+  class: "shifted",
+  style: "--shift: " + str(shift) + "px",
+  body
 )
 
 #let align-right = html.p.with(

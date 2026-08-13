@@ -19,7 +19,7 @@
 
 *Встречаемся* либо в четверг вечером, либо в субботу утром, но возможны группы и в другое время. 
 
-#html.img(src: "/img/librolibero.jpg", alt: "Libro libero", class: "medium blob wrap-right")
+#html.img(src: "/img/librolibero.jpg", alt: "Libro libero", class: "medium blob wrap right")
 
 === Вот список рассказов, на который я ориентируюсь
 

@@ -64,20 +64,42 @@ strong {
 
 .cols {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 
   &.cascade {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px 60px !important;
+
+    :nth-child(3n+1) { --n: 0 }
+    :nth-child(3n+2) { --n: 1 }
+    :nth-child(3n+3) { --n: 2 }
+
     align-items: normal;
     div {
       padding-top: calc(40px * var(--n, 0));
     }
-  
-    :nth-child(1) { --n: 0 }
-    :nth-child(2) { --n: 1 }
-    :nth-child(3) { --n: 2 }
-    :nth-child(4) { --n: 3 }
-    :nth-child(5) { --n: 4 }
-    :nth-child(6) { --n: 5 }
+    }
+
+  @media (max-width: 900px) {
+    &.cascade {
+      grid-template-columns: repeat(2, 1fr);
+
+      :nth-child(2n+1) { --n: 0; }
+      :nth-child(2n+2) { --n: 1; }
+      :nth-child(3n+3) { --n: 0; }
+    }
+  }
+
+  @media (max-width: 600px) {
+    &.cascade {
+      grid-template-columns: repeat(1, 1fr);
+
+      :nth-child(2n+1) { --n: 0; }
+      :nth-child(2n+2) { --n: 0; }
+      :nth-child(3n+3) { --n: 0; }
+    }
   }
 }
 
@@ -90,26 +112,27 @@ strong {
   height: fit-content;
   width: fit-content;
 
-  padding: 20px 20px;
+  padding: 10px 10px;
   max-width: 400px;
   background-color: var(--color-pop);
   color: var(--color-pop-fg);
 }
 
 .funny-links {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-template-columns: auto auto;
   gap: 20px;
   justify-content: center;
 
   :nth-child(2) {
-    margin-left: -40px;
+    margin-left: 20px;
   }
   :nth-child(3) {
     margin-left: 80px;
   }
   :nth-child(4) {
-    margin-left: 40px;
+    margin-left: 20px;
   }
 }
 .funny-links a {
@@ -130,23 +153,39 @@ strong {
 }
 
 .shifted {
-  max-width: 60%;
-  margin-left: 40px;
+  max-width: 600px;
+  margin-left: var(--shift, 40px);
 }
 
 img {
   border-radius: 5px;
 }
 
-.avatar {
-  object-fit: cover;
-  border-radius: 100px;
-  width: 200px;
-  height: 200px;
+.wrap.left {
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.wrap.right {
+  float: right;
+  margin-left: 30px;
+  margin-bottom: 30px;
 }
 
 img.tiny {
   max-width: 200px;
+  height: auto;
+
+  &.avatar {
+    object-fit: cover;
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+  }
+}
+img.smaller {
+  max-width: 300px;
   height: auto;
 }
 img.small {
@@ -158,14 +197,33 @@ img.medium{
   height: auto;
 }
 
-.wrap-left {
-  float: left;
-  margin-right: 30px;
+@media(max-width: 400px) {
+  img.tiny.wrap {
+    width: 100%;
+    max-width: 100%;
+    max-height: none !important
+  }
 }
-
-.wrap-right {
-  float: right;
-  margin-left: 30px;
+@media(max-width: 500px) {
+  img.smaller.wrap {
+    width: 100%;
+    max-width: 100%;
+    max-height: none !important
+  }
+}
+@media(max-width: 600px) {
+  img.small.wrap {
+    width: 100%;
+    max-width: 100%;
+    max-height: none !important
+  }
+}
+@media(max-width: 800px) {
+  img.medium.wrap {
+    width: 100%;
+    max-width: 100%;
+    max-height: none !important
+  }
 }
 
 .quote {
@@ -219,8 +277,15 @@ hr {
 .pops.triangle {
   max-width: 800px;
   display: flex;
+  flex-wrap: wrap;
   gap: 0px;
   align-items: center;
+
+  > div {
+    flex: 1 1;
+    min-width: 250px;
+  }
+
   :first-child {
     margin-right: -20px;
   }
@@ -232,7 +297,14 @@ hr {
 .pops.row {
   max-width: 900px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+
+  > .blob {
+    flex: 1 1;
+    min-width: 150px;
+  }
 }
 
 .pops.stairs {
@@ -254,7 +326,14 @@ hr {
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
+
+    > .blob {
+      flex: 1 1;
+      min-width: 150px;
+    }
   }
   .pop {
     max-width: 200px;
@@ -262,7 +341,7 @@ hr {
 }
 
 form p {
-  max-width: 800px;
+  max-width: min(100%, 800px);
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
@@ -272,6 +351,7 @@ form p {
   }
   
   input, textarea, select, button {
+    max-width: 100%;
     vertical-align: middle;
     background: transparent;
     color: var(--color-accent);
@@ -283,6 +363,12 @@ form p {
 
     &:active, &:focus-visible {
       outline: 2px solid var(--color-accent);
+    }
+  }
+
+  @media(max-width: 800px) {
+    input, textarea, select, button {
+      display: block;
     }
   }
 
