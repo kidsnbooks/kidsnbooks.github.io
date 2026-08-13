@@ -6,8 +6,6 @@ const formCourses = [
 ]
 
 function blobClip(element, padding = 12, points = 10) {
-  let firstRender = true;
-
   function ellipsePoint(t, halfW, halfH) {
     const angle = t * 2 * Math.PI;
     return { x: halfW * Math.cos(angle), y: halfH * Math.sin(angle) };
@@ -50,15 +48,7 @@ function blobClip(element, padding = 12, points = 10) {
     });
 
     element.style.clipPath = `path('${quadraticMidpointPath(pts)}')`;
-
-    if (firstRender) {
-      requestAnimationFrame(() => {
-        element.style.transition = "clip-path 1s";
-      });
-      firstRender = false;
-    }
   }
-
 
   render();
   const ro = new ResizeObserver(render);
@@ -107,11 +97,18 @@ function expandAnim(e) {
 }
 
 
+function whenReady(el) {
+  if (el.tagName !== 'IMG' || el.complete) return Promise.resolve();
+  return new Promise(res => el.addEventListener('load', res, { once: true }));
+}
 document.querySelectorAll(".blob").forEach(it => {
-  blobClip(it, 30, 12);
-  it.style.transition = "clip-path 1s";
-  it.addEventListener("mouseenter", () => blobClip(it, 30, 12))
-})
+  whenReady(it).then(() => {
+    blobClip(it, 30, 12);          // clip-path set now, image already sized
+    it.style.transition = "clip-path 1s"; // transition enabled only after
+    it.addEventListener("mouseenter", () => blobClip(it, 30, 12));
+  });
+});
+
 
 const flinks = document.querySelector(".funny-links")
 if (flinks) {
