@@ -10,19 +10,19 @@
   )[
     #html.input(type: "hidden", name: "access_key", value: "b61ad5ec-0e78-4880-b22e-a21d10f704aa")
 
-    #html.label[*Ваше имя*]
-    #html.input(type: "text", name: "name", autocomplete: "name", required: true)
+    #html.elem("label", attrs: ("for": "name"))[*Ваше имя*]
+    #html.input(id: "name", type: "text", name: "name", autocomplete: "name", required: true)
 
-    #html.label[*Ваш адрес электронной почты*]
-    #html.input(type: "email", name: "email", autocomplete: "email", required: true)
+    #html.elem("label", attrs: ("for": "email"))[*Ваш адрес электронной почты*]
+    #html.input(id: "email", type: "email", name: "email", autocomplete: "email", required: true)
 
-    #html.label[*Какой курс Вам интересен?*]
-    #html.select(name: "course", required: true, id: "course-select")[
+    #html.elem("label", attrs: ("for": "course-select"))[*Какой курс Вам интересен?*]
+    #html.select(id: "course-select", name: "course", required: true)[
     #html.option(value: "general", selected: true)[Просто спросить]
     ]
 
-    #html.label[*Что бы вы хотели спросить?*]
-    #html.textarea(name: "comment", required: true)
+    #html.elem("label", attrs: ("for": "comment"))[*Что бы вы хотели спросить?*]
+    #html.textarea(id: "comment", name: "comment", required: true)
 
     #html.button(type: "submit")[Отправить.]
   ]
@@ -98,14 +98,11 @@
 
 #let subtitle = html.p.with(class: "subtitle")
 
-#let cols(..args, widths: (), gap: 0, cascade: 0) = {
+#let cols(..args, widths: (), gap: 0, cascade: false) = {
   html.div(
     args.pos().zip(widths + (none,) * 99, range(99))
     .map(((body, basis, n)) => {
-      let style = (
-          (if basis != none {("flex-basis: " + repr(basis),)} else {()}) +
-          (if cascade != 0 {("margin-top: " + str(n * cascade) + "px",)} else {()})
-      ).join(", ")
+      let style = (if basis != none {("flex-basis: " + repr(basis))} else {none})
       
       html.div(
         body,
@@ -113,7 +110,7 @@
       )
     }).join(),
 
-    class: "cols",
+    class: "cols" + if cascade {" cascade"} else {none},
     ..(if gap != 0 {(style: "gap: " + str(gap) + "px",)})
   )
 }
@@ -131,11 +128,6 @@
   )
 
 }
-
-#let rounded-image(path, ..args) = block(html.img(
-  src: path,
-  ..args
-))
 
 #let pop(body, margin: none) = html.p(
   body,
