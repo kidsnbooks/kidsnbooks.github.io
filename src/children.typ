@@ -28,7 +28,7 @@
 
 *Встречаемся* либо в четверг вечером, либо в субботу утром, но возможны группы и в другое время. 
 
-#cols(widths: (50%,))[
+#cols()[
   === С младшими мы читали:
   _"Сказки про мам"_ и _"Сказки про королей"_ Сергея Седова\
   _"Большая маленькая девочка"_ Марии Бершадской\
@@ -48,17 +48,20 @@
 
   Но у нас есть еще неосвоенный книжный шкаф. Найдется, что почитать. 
 ][
-  #cols[
-    #html.img(
-      src: "/img/books1.jpg",
-      class: "tiny blob"
+  #cols(
+    center(
+      html.img(
+        src: "/img/books1.jpg",
+        class: "tiny blob"
+      )
+    ),
+    center(
+      html.img(
+        src: "/img/books2.jpg",
+        class: "tiny blob"
+      )
     )
-    ][
-    #html.img(
-      src: "/img/books2.jpg",
-      class: "tiny blob"
-    )
-  ]
+  )
   #center(html.img(
     src: "/img/books3.jpg",
     class: "tiny blob"
