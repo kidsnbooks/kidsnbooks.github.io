@@ -22,7 +22,7 @@
     ]
 
     #html.elem("label", attrs: ("for": "comment"))[*Что бы вы хотели спросить?*]
-    #html.textarea(id: "comment", name: "comment", required: true)
+    #html.textarea(id: "comment", name: "comment", rows: 4, cols: 30, required: true)
 
     #html.button(type: "submit")[Отправить.]
   ]

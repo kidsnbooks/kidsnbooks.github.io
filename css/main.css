@@ -341,7 +341,7 @@ hr {
 }
 
 form p {
-  max-width: min(100%, 800px);
+  max-width: 800px;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
@@ -369,6 +369,10 @@ form p {
   @media(max-width: 800px) {
     input, textarea, select, button {
       display: block;
+    }
+    input, textarea {
+      box-sizing: border-box;
+      width: 100%;
     }
   }
 
