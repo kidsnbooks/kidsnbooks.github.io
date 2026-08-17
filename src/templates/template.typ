@@ -143,3 +143,17 @@
   class: "center",
   ..(if max-width != none {(style: "max-width: " + str(max-width) + "px")})
 )
+
+#let timetable(..args) = {
+  heading(level: 1)[Время]
+
+  html.div(
+    args.pos().map(it => html.div(
+      {show " ": [\ ]; it},
+      class: "timeslot blob"
+    )).join() + html.div(class: "comment")[
+      *Если наберется 4-5 желающих*, мы можем открыть группу и в другое, не указанное в таблице, время. 
+    ],
+    class: "timetable"
+  )
+}

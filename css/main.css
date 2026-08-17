@@ -118,6 +118,30 @@ strong {
   color: var(--color-pop-fg);
 }
 
+.timetable {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+  .blob {
+    padding: 50px
+  }
+
+  .comment {
+    flex: 1 1;
+    min-width: 150px;
+  }
+
+  .timeslot {
+    flex-shrink: 0.00001;
+    font-size: 1.2em;
+  }
+}
+
 .funny-links {
   display: flex;
   flex-wrap: wrap;
