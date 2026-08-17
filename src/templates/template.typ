@@ -148,12 +148,25 @@
   heading(level: 1)[Время]
 
   html.div(
-    args.pos().map(it => html.div(
-      {show " ": [\ ]; it},
-      class: "timeslot blob"
-    )).join() + html.div(class: "comment")[
-      *Если наберется 4-5 желающих*, мы можем открыть группу и в другое, не указанное в таблице, время. 
-    ],
+    {
+      args.pos().map(it => html.div(
+        {
+          show " ": [\ ]
+          it
+        },
+        class: "timeslot blob"
+      )).join()
+
+      html.div(class: "comment")[
+        *Если наберется 4-5 желающих*, мы можем открыть группу и в другое, не указанное в таблице, время. 
+      ]
+    },
     class: "timetable"
   )
+
+  html.div(
+    class: "note center"
+  )[
+    Время в CET (по Берлину)
+  ]
 }

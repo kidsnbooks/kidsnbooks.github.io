@@ -54,6 +54,11 @@ h2 {
   font-size: 1.9em;
 }
 
+.note {
+  font-size: 0.8em;
+  filter: opacity(50%);
+}
+
 strong {
   font-family: "Libertinus Serif", sans-serif;
   font-style: italic;
